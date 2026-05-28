@@ -1,14 +1,14 @@
-export function Counter() {
-  let counter = 0
+import { useState } from 'react'
 
-  function Inc() {
-    counter++
-    console.log(counter)
+export function Counter() {
+  const [counter, setCount] = useState(0)
+
+  function inc() {
+    setCount(counter + 1)
   }
 
-  function Dec() {
-    counter--
-    console.log(counter)
+  function dec() {
+    setCount(counter - 1)
   }
 
   return (
@@ -28,7 +28,7 @@ export function Counter() {
           border: 'none',
           borderRadius: '5px',
         }}
-        onClick={Inc}
+        onClick={inc}
       >
         Inc
       </button>
@@ -41,7 +41,7 @@ export function Counter() {
           border: 'none',
           borderRadius: '5px',
         }}
-        onClick={Dec}
+        onClick={dec}
       >
         Dec
       </button>

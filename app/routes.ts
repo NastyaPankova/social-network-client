@@ -6,9 +6,8 @@ import {
 } from '@react-router/dev/routes'
 
 export default [
-  layout('./app/layout.tsx', [
-    index('./routes/home.tsx'),
-    route('login', './routes/login.tsx', [route('log2', './routes/log2.tsx')]),
+  layout('./routes/layout/layout.tsx', [
+    index('./routes/home/home.tsx'),
+    route('login', './routes/login/login.tsx'),
   ]),
 ] satisfies RouteConfig
-//lh/login(outlet)/log2/
