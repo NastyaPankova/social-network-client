@@ -1,4 +1,3 @@
-import { Outlet } from 'react-router'
 import { Counter } from '~/components/counter'
 import { Input_test } from '~/components/input_test'
 
