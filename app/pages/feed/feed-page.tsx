@@ -5,7 +5,7 @@ import { postsExamples } from '~/app/data/postExamples'
 export function FeedPage() {
   return (
     <div>
-      {postsExamples.map((post) => (
+       {postsExamples.map((post) => (
         <PostFeed
           title={post.title}
           content={post.content}

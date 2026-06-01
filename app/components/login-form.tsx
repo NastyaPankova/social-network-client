@@ -1,10 +1,11 @@
 import { type ChangeEvent, useState } from 'react'
 import Button from '@mui/material/Button'
-import { ButtonGroup } from '@mui/material'
 import { ButtonHome } from '~/components/ButtonHome'
 import { InputForm } from '~/components/InputForm'
+import Link from '@mui/material/Link'
+import { useNavigate } from 'react-router'
 
-export function RegistrationForm({
+export function LoginForm({
   onOkClick,
 }: {
   onOkClick: (login: string, password: string, fromForm: string) => void
@@ -12,8 +13,10 @@ export function RegistrationForm({
   const [login, setLogin] = useState('')
   const [password, setPassword] = useState('')
 
+  const navigate = useNavigate()
+
   return (
-    <div>
+    <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
       <form noValidate autoComplete="off">
         <InputForm
           placeholder={'Enter E-Mail'}
@@ -29,19 +32,37 @@ export function RegistrationForm({
             setPassword(e.target.value)
           }
         />
-        <ButtonGroup
-          variant="contained"
-          color="primary"
-          aria-label="contained primary button group"
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            width: '100%',
+            marginTop: 20,
+          }}
         >
           <Button
             variant="contained"
-            onClick={() => onOkClick(login, password, 'registration')}
+            onClick={() => onOkClick(login, password, 'login')}
           >
             Ok
           </Button>
           <ButtonHome />
-        </ButtonGroup>
+        </div>
+        <div
+          style={{ display: 'flex', justifyContent: 'center', width: '100%' }}
+        >
+          <Link
+            href="/registration"
+            underline="hover"
+            onClick={(e) => {
+              e.preventDefault()
+              navigate('/registration')
+            }}
+          >
+            No account?
+          </Link>
+        </div>
       </form>
     </div>
   )

@@ -1,4 +1,4 @@
-import { RegistrationForm } from '~/pages/registration/registration-form'
+import { RegistrationForm } from '~/components/LoginAndRegistrationForm/RegistrationForm'
 
 export function RegistrationPage() {
   const onOkClick = (login: string, password: string, fromForm: string) => {
@@ -8,7 +8,9 @@ export function RegistrationPage() {
   return (
     <main //className="flex items-center justify-center pt-16 pb-4"
     >
-      <div>Registration page</div>
+      <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
+        Registration
+      </div>
       <RegistrationForm onOkClick={onOkClick} />
     </main>
   )

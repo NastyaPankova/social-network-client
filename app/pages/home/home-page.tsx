@@ -1,5 +1,10 @@
 import { Counter } from '~/components/counter'
 import { Input_test } from '~/components/input_test'
+import { LoginForm } from '~/components/LoginAndRegistrationForm/LoginForm'
+
+const onOkClick = (login: string, password: string, fromForm: string) => {
+  console.log(login, password, fromForm)
+}
 
 export function HomePage() {
   return (
@@ -11,6 +16,7 @@ export function HomePage() {
       >
         <Counter />
         <Input_test />
+        <LoginForm onOkClick={onOkClick} />
       </div>
     </main>
   )
