@@ -1,15 +1,19 @@
 import { type ChangeEvent, useState } from 'react'
 import Button from '@mui/material/Button'
-import { ButtonHome } from '~/components/ButtonHome'
-import { InputForm } from '~/components/InputForm'
+import { ButtonHome } from '~/components/shared/buttonFeed'
+import { InputForm } from '~/toDelete/InputForm'
+import Link from '@mui/material/Link'
+import { useNavigate } from 'react-router'
 
-export function RegistrationForm({
+export function LoginForm({
   onOkClick,
 }: {
   onOkClick: (login: string, password: string, fromForm: string) => void
 }) {
   const [login, setLogin] = useState('')
   const [password, setPassword] = useState('')
+
+  const navigate = useNavigate()
 
   return (
     <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
@@ -39,11 +43,25 @@ export function RegistrationForm({
         >
           <Button
             variant="contained"
-            onClick={() => onOkClick(login, password, 'registration')}
+            onClick={() => onOkClick(login, password, 'login')}
           >
             Ok
           </Button>
           <ButtonHome />
+        </div>
+        <div
+          style={{ display: 'flex', justifyContent: 'center', width: '100%' }}
+        >
+          <Link
+            href="/registration"
+            underline="hover"
+            onClick={(e) => {
+              e.preventDefault()
+              navigate('/registration')
+            }}
+          >
+            No account?
+          </Link>
         </div>
       </form>
     </div>

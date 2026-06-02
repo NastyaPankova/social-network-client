@@ -1,4 +1,4 @@
-import { ButtonLikes } from '~/components/Post/ButtonLikes'
+import { ButtonLikes } from '~/toDelete/ButtonLikes'
 
 export function PostFeed({ title, content, author }: postInterface) {
   //лучше использовать <div> блоки или специализированные?

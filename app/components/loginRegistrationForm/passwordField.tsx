@@ -12,12 +12,6 @@ export function PasswordField({
   const [showPassword, setShowPassword] = useState<boolean>(false)
 
   const handleClickShowPassword = () => setShowPassword((show) => !show)
-  //для сброса фокуса при клике
-  /* const handleMouseDownPassword = (
-    event: React.MouseEvent<HTMLButtonElement>
-  ) => {
-    event.preventDefault()
-  }*/
 
   return (
     <TextField
@@ -31,12 +25,7 @@ export function PasswordField({
         input: {
           endAdornment: (
             <InputAdornment position="end">
-              <IconButton
-                aria-label="переключить видимость пароля"
-                onClick={handleClickShowPassword}
-                //onMouseDown={handleMouseDownPassword}
-                edge="end"
-              >
+              <IconButton onClick={handleClickShowPassword} edge="end">
                 {showPassword ? <VisibilityOff /> : <Visibility />}
               </IconButton>
             </InputAdornment>

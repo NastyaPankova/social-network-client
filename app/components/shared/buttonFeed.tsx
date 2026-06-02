@@ -1,11 +1,11 @@
 import { useNavigate } from 'react-router'
 import Button from '@mui/material/Button'
 
-export function ButtonHome() {
+export function ButtonFeed() {
   const navigate = useNavigate()
   return (
     <Button variant="contained" onClick={() => navigate('/')}>
-      Home
+      Feed
     </Button>
   )
 }

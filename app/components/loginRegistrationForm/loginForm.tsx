@@ -1,7 +1,8 @@
 import { type ChangeEvent, useState } from 'react'
 import Button from '@mui/material/Button'
-import { ButtonHome } from '~/components/ButtonHome'
-import { InputForm } from '~/components/InputForm'
+import { ButtonFeed } from '~/components/shared/buttonFeed'
+import { LoginField } from '~/components/loginRegistrationForm/loginField'
+import { PasswordField } from '~/components/loginRegistrationForm/passwordField'
 import Link from '@mui/material/Link'
 import { useNavigate } from 'react-router'
 
@@ -18,16 +19,12 @@ export function LoginForm({
   return (
     <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
       <form noValidate autoComplete="off">
-        <InputForm
-          placeholder={'Enter E-Mail'}
-          inputType={'Login'}
+        <LoginField
           onChange={(e: ChangeEvent<HTMLInputElement>) =>
             setLogin(e.target.value)
           }
         />
-        <InputForm
-          placeholder={'Enter Password'}
-          inputType={'Password'}
+        <PasswordField
           onChange={(e: ChangeEvent<HTMLInputElement>) =>
             setPassword(e.target.value)
           }
@@ -47,7 +44,7 @@ export function LoginForm({
           >
             Ok
           </Button>
-          <ButtonHome />
+          <ButtonFeed />
         </div>
         <div
           style={{ display: 'flex', justifyContent: 'center', width: '100%' }}

@@ -1,4 +1,4 @@
-import { CommonLayoutPage } from '~/app/layout-page'
+import { CommonLayoutPage } from '~/app/layoutPage'
 
 export default function CommonLayout() {
   return <CommonLayoutPage />

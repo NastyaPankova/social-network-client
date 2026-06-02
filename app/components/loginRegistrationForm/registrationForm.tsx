@@ -1,8 +1,8 @@
 import { type ChangeEvent, useState } from 'react'
 import Button from '@mui/material/Button'
-import { ButtonHome } from '~/components/ButtonHome'
-import { LoginField } from '~/components/LoginAndRegistrationForm/LoginField'
-import { PasswordField } from '~/components/LoginAndRegistrationForm/PasswordField'
+import { ButtonFeed } from '~/components/shared/buttonFeed'
+import { LoginField } from '~/components/loginRegistrationForm/loginField'
+import { PasswordField } from '~/components/loginRegistrationForm/passwordField'
 
 export function RegistrationForm({
   onOkClick,
@@ -40,7 +40,7 @@ export function RegistrationForm({
           >
             Ok
           </Button>
-          <ButtonHome />
+          <ButtonFeed />
         </div>
       </form>
     </div>

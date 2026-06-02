@@ -8,12 +8,12 @@ import Typography from '@mui/material/Typography'
 import FavoriteIcon from '@mui/icons-material/Favorite'
 import PetsIcon from '@mui/icons-material/Pets'
 
-export default function PostMUIFeed({
+export default function PostFeed({
   title,
   date,
   content,
   author,
-}: postInterfaceMUI) {
+}: postInterface) {
   return (
     <Card sx={{ maxWidth: '70%', width: 500, mx: 'auto' }}>
       <CardHeader
@@ -37,7 +37,7 @@ export default function PostMUIFeed({
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
+        <IconButton>
           <FavoriteIcon />
         </IconButton>
       </CardActions>

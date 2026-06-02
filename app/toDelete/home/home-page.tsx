@@ -1,6 +1,6 @@
-import { Counter } from '~/components/counter'
-import { Input_test } from '~/components/input_test'
-import { LoginForm } from '~/components/LoginAndRegistrationForm/LoginForm'
+import { Counter } from '~/toDelete/counter'
+import { Input_test } from '~/toDelete/input_test'
+import { LoginForm } from '~/components/loginRegistrationForm/loginForm'
 
 const onOkClick = (login: string, password: string, fromForm: string) => {
   console.log(login, password, fromForm)
