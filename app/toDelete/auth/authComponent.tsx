@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+/*import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router'
 import { loginUser } from './authSlice'
-import type { RootState, AppDispatch } from './store'
+import type { RootState, AppDispatch } from '../app/store/store'
 import { TextField, Button, Alert } from '@mui/material'
 
 export function AuthComponent() {
@@ -52,4 +52,4 @@ export function AuthComponent() {
       </Button>
     </form>
   )
-}
+}*/

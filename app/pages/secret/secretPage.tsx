@@ -1,9 +1,7 @@
-import { logout } from '~/auth/authSlice'
+import { logout } from '~/app/store/slices/auth/slice'
 import { useDispatch, useSelector } from 'react-redux'
-import type { RootState } from '~/auth/store'
 import { useNavigate } from 'react-router'
-
-const getCurrentUser = (state: RootState) => state.auth.user
+import { getCurrentUser } from '~/app/store/slices/auth/selectors'
 
 export default function GetSecret() {
   const dispatch = useDispatch()
@@ -14,7 +12,7 @@ export default function GetSecret() {
   const handleLogout = () => {
     dispatch(logout())
 
-    navigate('/auth', { replace: true })
+    navigate('/login', { replace: true })
   }
 
   return (

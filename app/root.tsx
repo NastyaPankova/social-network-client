@@ -11,7 +11,7 @@ import type { Route } from './+types/root'
 import './app.css'
 import Home from '~/toDelete/homeRoute/home'
 import { Provider } from 'react-redux'
-import { store } from '~/auth/store'
+import { store } from '~/app/store/store'
 
 export const links: Route.LinksFunction = () => [
   { rel: 'preconnect', href: 'https://fonts.googleapis.com' },

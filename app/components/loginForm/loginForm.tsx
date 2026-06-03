@@ -1,27 +1,36 @@
-import { type ChangeEvent, useState } from 'react'
-import Button from '@mui/material/Button'
+import React, { type ChangeEvent, useState } from 'react'
 import { ButtonFeed } from '~/components/shared/buttonFeed'
-import { LoginField } from '~/components/loginRegistrationForm/loginField'
-import { PasswordField } from '~/components/loginRegistrationForm/passwordField'
+import { EmailField } from '~/components/shared/emailField'
+import { PasswordField } from '~/components/shared/passwordField'
 import Link from '@mui/material/Link'
 import { useNavigate } from 'react-router'
+import { ButtonOk } from '~/components/shared/buttonOk'
 
-export function LoginForm({
-  onOkClick,
-}: {
-  onOkClick: (login: string, password: string, fromForm: string) => void
-}) {
-  const [login, setLogin] = useState('')
+export function LoginForm() {
+  const testEmail = 'Test E-mail'
+  const testPassword = 'Test Password'
+
+  //const dispatch = useDispatch<AppDispatch>()
+
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
   const navigate = useNavigate()
 
+  /*const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+
+    await dispatch(loginUser({ email, password })).unwrap()
+
+    navigate('/secret')
+  }*/
+
   return (
     <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
       <form noValidate autoComplete="off">
-        <LoginField
+        <EmailField
           onChange={(e: ChangeEvent<HTMLInputElement>) =>
-            setLogin(e.target.value)
+            setEmail(e.target.value)
           }
         />
         <PasswordField
@@ -38,12 +47,7 @@ export function LoginForm({
             marginTop: 20,
           }}
         >
-          <Button
-            variant="contained"
-            onClick={() => onOkClick(login, password, 'login')}
-          >
-            Ok
-          </Button>
+          <ButtonOk email={email} password={password} fromForm="login" />
           <ButtonFeed />
         </div>
         <div

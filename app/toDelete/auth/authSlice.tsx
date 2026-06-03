@@ -1,23 +1,11 @@
-import {
+/*import {
   createSlice,
   createAsyncThunk,
   type PayloadAction,
 } from '@reduxjs/toolkit'
 
-interface AuthState {
-  user: string | null
-  token: string | null
-  isLoading: boolean
-}
-
 const token = 'MyNewToken'
 const user = 'MyUser'
-
-const initialState: AuthState = {
-  user: null,
-  token: null,
-  isLoading: false,
-}
 
 export const loginUser = createAsyncThunk(
   'auth/loginUser',
@@ -30,7 +18,7 @@ export const loginUser = createAsyncThunk(
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(credentials),
-      })*/
+      })
       const response_test = { user: user, token: token }
       console.log(response_test)
       //const data = await response.json()
@@ -43,7 +31,7 @@ export const loginUser = createAsyncThunk(
   }
 )
 
-const authSlice = createSlice({
+/*const authSlice = createSlice({
   name: 'auth',
   initialState,
   // set flag to {value} -> общее использование для загрузки
@@ -81,3 +69,4 @@ const authSlice = createSlice({
 
 export const { logout } = authSlice.actions
 export default authSlice.reducer
+*/

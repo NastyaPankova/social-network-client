@@ -1,23 +1,19 @@
 import { type ChangeEvent, useState } from 'react'
-import Button from '@mui/material/Button'
 import { ButtonFeed } from '~/components/shared/buttonFeed'
-import { LoginField } from '~/components/loginRegistrationForm/loginField'
-import { PasswordField } from '~/components/loginRegistrationForm/passwordField'
+import { EmailField } from '~/components/shared/emailField'
+import { PasswordField } from '~/components/shared/passwordField'
+import { ButtonOk } from '~/components/shared/buttonOk'
 
-export function RegistrationForm({
-  onOkClick,
-}: {
-  onOkClick: (login: string, password: string, fromForm: string) => void
-}) {
-  const [login, setLogin] = useState('')
+export function RegistrationForm() {
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
   return (
     <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
       <form noValidate autoComplete="off">
-        <LoginField
+        <EmailField
           onChange={(e: ChangeEvent<HTMLInputElement>) =>
-            setLogin(e.target.value)
+            setEmail(e.target.value)
           }
         />
         <PasswordField
@@ -34,12 +30,7 @@ export function RegistrationForm({
             marginTop: 20,
           }}
         >
-          <Button
-            variant="contained"
-            onClick={() => onOkClick(login, password, 'registration')}
-          >
-            Ok
-          </Button>
+          <ButtonOk email={email} password={password} fromForm="registration" />
           <ButtonFeed />
         </div>
       </form>

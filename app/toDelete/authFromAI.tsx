@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { loginUser, logout } from './slices/authSlice'
-import { RootState, AppDispatch } from './store'
+import { RootState, AppDispatch } from '../app/store/store'
 import { TextField, Button, CircularProgress, Alert } from '@mui/material'
 
 export function AuthForm() {

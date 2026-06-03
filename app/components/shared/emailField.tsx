@@ -1,7 +1,7 @@
 import React, { type ChangeEvent } from 'react'
 import { InputAdornment, TextField } from '@mui/material'
 
-export function LoginField({
+export function EmailField({
   onChange,
 }: {
   onChange: (e: ChangeEvent<HTMLInputElement>) => void
