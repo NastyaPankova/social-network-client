@@ -9,7 +9,6 @@ import {
 
 import type { Route } from './+types/root'
 import './app.css'
-import Home from '~/toDelete/homeRoute/home'
 import { Provider } from 'react-redux'
 import { store } from '~/app/store/store'
 

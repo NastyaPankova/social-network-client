@@ -1,4 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
+import { setIsLoading } from '~/app/store/slices/app/slice'
+import { setToken, setUser } from '~/app/store/slices/auth/slice'
 
 //todo
 //delete test e-mail and password
@@ -14,7 +16,7 @@ interface credentials {
 
 export const loginUser = createAsyncThunk(
   'auth/loginUser',
-  async function (credentials: credentials, { rejectWithValue }) {
+  async function (credentials: credentials, { rejectWithValue, dispatch }) {
     try {
       /*const response = await fetch('localhost////', {
         method: 'POST',
@@ -29,15 +31,22 @@ export const loginUser = createAsyncThunk(
 
       //const data = await response.json()
       //localStorage.setItem('token', data.token)
+      dispatch(setIsLoading(true))
 
       const responseDataTest = { user: testUser, token: testToken }
       console.log(responseDataTest)
+      dispatch(setUser(responseDataTest.user))
+      dispatch(setToken(responseDataTest.token))
 
-      localStorage.setItem('token', responseDataTest.token)
+      //localStorage.setItem('token', responseDataTest.token)
 
       return responseDataTest
     } catch (error) {
+      dispatch(setUser(null))
+      dispatch(setToken(null))
       return rejectWithValue(error)
+    } finally {
+      dispatch(setIsLoading(false))
     }
   }
 )

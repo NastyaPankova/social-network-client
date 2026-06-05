@@ -1,12 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit'
-import type { authState } from '~/app/store/slices/auth/types'
-import { loginUser } from '~/app/store/slices/auth/thunks'
-
-const initialState: authState = {
-  user: null,
-  token: null,
-  isLoading: false,
-}
+import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
+import { initialState } from '~/app/store/slices/auth/initialState'
 
 const authSlice = createSlice({
   name: 'auth',
@@ -17,41 +10,21 @@ const authSlice = createSlice({
       state.token = null
       localStorage.removeItem('token')
     },
-
-    //todo
-    //комментарий к extrareducers
-    //loginStart: (state) => {
-    //       state.isLoading = true;
-    //     },
-    //     loginSuccess: (state, action) => {
-    //       state.isLoading = false;
-    //       state.user = action.payload.user;
-    //       state.token = action.payload.token;
-    //     },
-    //     loginFailure: (state, action) => {
-    //       state.isLoading = false;
-    //     },
-    //в loginUser добавятся
-    // ...function (dispatch)
-    //   try {dispatch(loginStart())}
-    // dispatch(loginSuccess())
-    // catch {dispatch(loginFailure)}
+    setUser: (state, action: PayloadAction<string | null>) => {
+      state.user = action.payload
+    },
+    setToken: (state, action: PayloadAction<string | null>) => {
+      state.token = action.payload
+      localStorage.setItem('token', action.payload ?? '')
+    },
   },
-  extraReducers: (builder) => {
-    builder
-      .addCase(loginUser.pending, (state) => {
-        state.isLoading = true
-      })
-      .addCase(loginUser.fulfilled, (state, action) => {
-        state.isLoading = false
-        state.user = action.payload.user
-        state.token = action.payload.token
-      })
-      .addCase(loginUser.rejected, (state, action) => {
-        state.isLoading = false
-      })
-  },
+  /*extraReducers: (builder) => {
+    builder.addCase(loginUser.fulfilled, (state, action) => {
+      state.user = action.payload.user
+      state.token = action.payload.token
+    })
+  },*/
 })
 
-export const { logout } = authSlice.actions
+export const { logout, setUser, setToken } = authSlice.actions
 export default authSlice.reducer

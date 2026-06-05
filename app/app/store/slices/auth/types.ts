@@ -1,6 +1,4 @@
-export interface authState {
+export interface AuthState {
   user: null | string
   token: null | string
-  isLoading: boolean
-  // error: null,
 }
