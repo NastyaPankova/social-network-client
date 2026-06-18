@@ -53,7 +53,6 @@ export default function App() {
   return (
     <Provider store={store}>
       <Auth />
-      <Outlet />
     </Provider>
   )
 }
@@ -63,9 +62,8 @@ export function Auth() {
   const navigate = useNavigate()
   history.navigate = navigate
   useEffect(() => {
-    if (localStorage.getItem('token')) {
-      dispatch(checkAuth()).unwrap()
-    }
+    //localStorage.getItem('token')
+    dispatch(checkAuth()).unwrap()
   }, [])
   const auth = useSelector(isAuth)
   const user = useSelector(getCurrentUser)

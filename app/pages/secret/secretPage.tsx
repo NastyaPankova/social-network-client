@@ -20,7 +20,7 @@ export default function GetSecret() {
       style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
     >
       <h1>You got secret!</h1>
-      <div>{user!.name}</div>
+      <div>{user?.name}</div>
       <button onClick={handleLogout}>Logout</button>
     </div>
   )
