@@ -5,8 +5,10 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff'
 import type { ChangeEvent } from 'react'
 
 export function PasswordField({
+  value,
   onChange,
 }: {
+  value: string
   onChange: (e: ChangeEvent<HTMLInputElement>) => void
 }) {
   const [showPassword, setShowPassword] = useState<boolean>(false)
@@ -15,6 +17,7 @@ export function PasswordField({
 
   return (
     <TextField
+      value={value}
       sx={{ mt: 2 }}
       label="Password"
       variant="outlined"

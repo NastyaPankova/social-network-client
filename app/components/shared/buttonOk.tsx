@@ -33,7 +33,9 @@ export function ButtonOk({
     fromForm: string
   ) => {
     console.log(email, password, fromForm)
-    await dispatch(loginUser({ email, password }))
+
+    await dispatch(loginUser({ email, password })).unwrap()
+    debugger
     navigate('/secret')
   }
 

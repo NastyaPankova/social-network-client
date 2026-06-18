@@ -1,13 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { setIsLoading } from '~/app/store/slices/app/slice'
+import { setIsAuth, setIsLoading } from '~/app/store/slices/app/slice'
 import { setToken, setUser } from '~/app/store/slices/auth/slice'
-
-//todo
-//delete test e-mail and password
-const testEmail = 'Test E-mail'
-const testPassword = 'Test Password'
-const testToken = 'Test Token'
-const testUser = 'Test User'
+import AuthService from '~/app/services/authService'
 
 interface credentials {
   email: string
@@ -16,34 +10,22 @@ interface credentials {
 
 export const loginUser = createAsyncThunk(
   'auth/loginUser',
-  async function (credentials: credentials, { rejectWithValue, dispatch }) {
+  async function (
+    { email, password }: credentials,
+    { rejectWithValue, dispatch }
+  ) {
     try {
-      /*const response = await fetch('localhost////', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(credentials),
-      })*/
-
-      /* if (!response.ok) {
-        const error = await response.json()
-        return rejectWithValue(error)
-      }*/
-
-      //const data = await response.json()
-      //localStorage.setItem('token', data.token)
       dispatch(setIsLoading(true))
 
-      const responseDataTest = { user: testUser, token: testToken }
-      console.log(responseDataTest)
-      dispatch(setUser(responseDataTest.user))
-      dispatch(setToken(responseDataTest.token))
-
-      //localStorage.setItem('token', responseDataTest.token)
-
-      return responseDataTest
+      const response = await AuthService.login(email, password)
+      debugger
+      dispatch(setToken(response.data.accessToken))
+      dispatch(setUser(response.data.user))
+      dispatch(setIsAuth(true))
     } catch (error) {
       dispatch(setUser(null))
       dispatch(setToken(null))
+      dispatch(setIsAuth(false))
       return rejectWithValue(error)
     } finally {
       dispatch(setIsLoading(false))

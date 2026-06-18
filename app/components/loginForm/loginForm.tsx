@@ -7,13 +7,13 @@ import { useNavigate } from 'react-router'
 import { ButtonOk } from '~/components/shared/buttonOk'
 
 export function LoginForm() {
-  const testEmail = 'Test E-mail'
-  const testPassword = 'Test Password'
+  const testEmail = 'user1@mail.com'
+  const testPassword = 'pass1'
 
   //const dispatch = useDispatch<AppDispatch>()
 
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [email, setEmail] = useState(testEmail)
+  const [password, setPassword] = useState(testPassword)
 
   const navigate = useNavigate()
 
@@ -29,11 +29,13 @@ export function LoginForm() {
     <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
       <form noValidate autoComplete="off">
         <EmailField
+          value={testEmail}
           onChange={(e: ChangeEvent<HTMLInputElement>) =>
             setEmail(e.target.value)
           }
         />
         <PasswordField
+          value={testPassword}
           onChange={(e: ChangeEvent<HTMLInputElement>) =>
             setPassword(e.target.value)
           }

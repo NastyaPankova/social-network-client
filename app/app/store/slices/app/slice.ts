@@ -8,8 +8,18 @@ const appSlice = createSlice({
     setIsLoading: (state, action: PayloadAction<boolean>) => {
       state.isLoading = action.payload
     },
+    setIsAuth: (state, action: PayloadAction<boolean>) => {
+      state.isAuth = action.payload
+    },
+  },
+  //q
+  //logout внутри app slice
+  extraReducers: (builder) => {
+    builder.addCase('auth/logout', (state) => {
+      state.isAuth = false
+    })
   },
 })
 
-export const { setIsLoading } = appSlice.actions
+export const { setIsLoading, setIsAuth } = appSlice.actions
 export default appSlice.reducer
