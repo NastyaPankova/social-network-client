@@ -22,11 +22,6 @@ export function Auth() {
   if (loading) {
     ;<LinearProgress aria-label="Loading…" />
   } else {
-    return (
-      <>
-        <h1>{auth ? `Hello, ${user?.name}` : 'Login'}</h1>
-        <Outlet />
-      </>
-    )
+    return <Outlet />
   }
 }

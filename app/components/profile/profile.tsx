@@ -19,18 +19,16 @@ import FavoriteIcon from '@mui/icons-material/Favorite'
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt'
 import Avatar from '@mui/material/Avatar'
 import Typography from '@mui/material/Typography'
-import CircularProgress from '@mui/material/CircularProgress'
-import Alert from '@mui/material/Alert'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router'
 
-// Селекторы и экшены авторизованного пользователя
 import { getCurrentUser } from '~/store/slices/auth/selectors'
 import { logout } from '~/store/slices/auth/slice'
 
 // Экшены и селекторы для публичного профиля
-import { setProfile, clearProfile } from '~/store/slices/user/slice'
+// УБРАНО: setProfile больше не нужен, данные сохраняются автоматически через extraReducers санки
+import { clearProfile } from '~/store/slices/user/slice'
 import { getProfile } from '~/store/slices/user/selectors'
 import { getUserById } from '~/store/slices/user/thunks'
 import type { AppDispatch } from '~/store/store'
@@ -51,8 +49,8 @@ function stringAvatar(name: string) {
   const secondLetter = words[1]?.[0] || ''
   return {
     sx: {
-      bgcolor: 'rgb(204,234,255)', // Ваш стандартный цвет фона
-      color: '#051e34', // Ваш стандартный цвет текста
+      bgcolor: 'rgb(204,234,255)',
+      color: '#051e34',
     },
     children: `${firstLetter}${secondLetter}`.toUpperCase(),
   }
@@ -230,60 +228,29 @@ export default function Profile() {
                     transition: '0.2s',
                     transform: open ? 'rotate(-180deg)' : 'rotate(0)',
                     alignSelf: 'center',
-                    mt: 0,
                   }}
                 />
               </ListItemButton>
-
               {open &&
-                !loading &&
-                displayUser &&
                 listItems.map((item) => (
                   <ListItemButton
                     key={item.label}
                     sx={{
-                      py: 0,
+                      py: 1,
                       minHeight: 32,
-                      color: 'rgba(255,255,255,.8)',
-                      mt: 0.5,
+                      color: 'rgba(255,255,255,0.8)',
                     }}
                   >
                     <ListItemIcon sx={{ color: 'inherit' }}>
                       {item.icon}
                     </ListItemIcon>
-                    <ListItemText
-                      primary={isMe ? `My ${item.label}` : item.label}
-                      slotProps={{
-                        primary: { sx: { fontSize: 14, fontWeight: 'medium' } },
-                      }}
-                    />
+                    <ListItemText primary={item.label} />
                   </ListItemButton>
                 ))}
             </Box>
           </FireNav>
         </Paper>
       </ThemeProvider>
-
-      {/* Основной контент страницы профиля */}
-      <Box sx={{ flexGrow: 1, pt: 1 }}>
-        {loading ? (
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-            <CircularProgress size={24} />
-            <Typography>Loading user profile details...</Typography>
-          </Box>
-        ) : (
-          <Box>
-            <Typography variant="h4" sx={{ fontWeight: 'bold', mb: 1 }}>
-              {displayUser?.name}
-            </Typography>
-            <Typography variant="body1" color="text.secondary">
-              {isMe
-                ? 'This is your personal private space.'
-                : `Viewing public timeline for user ID: ${id}`}
-            </Typography>
-          </Box>
-        )}
-      </Box>
     </Box>
   )
 }

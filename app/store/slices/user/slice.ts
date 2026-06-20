@@ -1,25 +1,27 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
 import { initialState } from '~/store/slices/user/initialState'
+import { getUserById } from '~/store/slices/user/thunks'
 import type { IUser } from '~/interfaces/IUser'
 
 const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    clearProfile: (state) => {
+    clearProfile(state) {
       state.profile = null
     },
-    setProfile: (state, action: PayloadAction<IUser | null>) => {
-      state.profile = action.payload
-    },
   },
-  /*extraReducers: (builder) => {
-    builder.addCase(loginUser.fulfilled, (state, action) => {
-      state.user = action.payload.user
-      state.token = action.payload.token
-    })
-  },*/
+  extraReducers: (builder) => {
+    builder
+
+      .addCase(getUserById.fulfilled, (state, action: PayloadAction<IUser>) => {
+        state.profile = action.payload
+      })
+      .addCase(getUserById.rejected, (state) => {
+        state.profile = null
+      })
+  },
 })
 
-export const { clearProfile, setProfile } = userSlice.actions
+export const { clearProfile } = userSlice.actions
 export default userSlice.reducer

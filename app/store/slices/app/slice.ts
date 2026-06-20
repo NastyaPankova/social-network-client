@@ -1,5 +1,6 @@
 import { type Action, createSlice, type PayloadAction } from '@reduxjs/toolkit'
 import { initialState } from '~/store/slices/app/initialState'
+import { login, registration } from '~/store/slices/authentication/thunks'
 
 const appSlice = createSlice({
   name: 'app',
@@ -15,9 +16,44 @@ const appSlice = createSlice({
   //q
   //logout внутри app slice
   extraReducers: (builder) => {
+    //logout
     builder.addCase('auth/logout', (state) => {
       state.isAuth = false
+      state.error = null
     })
+    builder
+      .addCase('authentication/logout', (state) => {
+        state.isAuth = false
+        state.error = null
+      })
+      //login
+      .addCase(login.pending, (state) => {
+        state.isLoading = true
+        state.error = null
+      })
+      .addCase(login.fulfilled, (state) => {
+        state.isLoading = false
+        state.isAuth = true
+      })
+      .addCase(login.rejected, (state, action: PayloadAction<any>) => {
+        state.isLoading = false
+        state.isAuth = false
+        state.error = action.payload || 'Unauthorized '
+      })
+      //registration
+      .addCase(registration.pending, (state) => {
+        state.isLoading = true
+        state.error = null
+      })
+      .addCase(registration.fulfilled, (state) => {
+        state.isLoading = false
+        state.isAuth = true
+      })
+      .addCase(registration.rejected, (state, action: PayloadAction<any>) => {
+        state.isLoading = false
+        state.isAuth = false
+        state.error = action.payload || 'Registration failed'
+      })
   },
 })
 

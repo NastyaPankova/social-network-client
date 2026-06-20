@@ -1,16 +1,20 @@
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
 import Toolbar from '@mui/material/Toolbar'
-import Typography from '@mui/material/Typography'
-import Button from '@mui/material/Button'
-import IconButton from '@mui/material/IconButton'
-import MenuIcon from '@mui/icons-material/Menu'
 import { Container } from '@mui/material'
 import styles from '~/styles/containers.module.scss'
 import LoginButton from '~/layout/components/LoginButton'
 import FeedButton from '~/layout/components/FeedButton'
+import { isAuth } from '~/store/slices/app/selectors'
+import ProfileButton from '~/layout/components/ProfileButton'
+import { useSelector } from 'react-redux'
+import { useLocation } from 'react-router'
+import LogoutButton from '~/layout/components/LogoutButton'
 
 export default function ButtonAppBar() {
+  const auth = useSelector(isAuth)
+  const location = useLocation()
+  const isProfilePage = location.pathname === '/profile/me'
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar
@@ -22,10 +26,17 @@ export default function ButtonAppBar() {
         }}
       >
         <Container maxWidth={false} className={styles.mainHeaderContainer}>
-          <Toolbar>
+          <Toolbar disableGutters>
             <FeedButton />
             <Box sx={{ flexGrow: 1 }} />
-            <LoginButton />
+            {auth ? (
+              <>
+                {isProfilePage && <LogoutButton />}
+                <ProfileButton />
+              </>
+            ) : (
+              <LoginButton />
+            )}
           </Toolbar>
         </Container>
       </AppBar>

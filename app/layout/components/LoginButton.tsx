@@ -2,9 +2,11 @@ import LoginIcon from '@mui/icons-material/Login'
 import { Link } from 'react-router'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
+import Tooltip from "@mui/material/Tooltip";
 
 export default function LoginButton() {
   return (
+      <Tooltip title="Login">
     <Button
       color="inherit"
       component={Link}
@@ -15,5 +17,7 @@ export default function LoginButton() {
         Login
       </Typography>
     </Button>
+      </Tooltip>
+
   )
 }

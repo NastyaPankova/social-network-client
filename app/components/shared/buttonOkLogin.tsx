@@ -6,6 +6,7 @@ import type { AppDispatch } from '~/store/store'
 import { loginUser } from '~/store/slices/auth/thunks'
 import { getToken } from '~/store/slices/auth/selectors'
 import { useNavigate } from 'react-router'
+import { login } from '~/store/slices/authentication/thunks'
 
 export function ButtonOkLogin({
   email,
@@ -20,12 +21,15 @@ export function ButtonOkLogin({
   const onOkClick = async (email: string, password: string) => {
     console.log(email, password)
 
-    await dispatch(loginUser({ email, password })).unwrap()
+    //todo
+    ///await dispatch(loginUser({ email, password })).unwrap()
+    await dispatch(login({ email, password }))
     debugger
     navigate('/profile/me', { replace: true })
   }
 
   const loading = useSelector(isLoading)
+  console.log({})
 
   return (
     <Button
