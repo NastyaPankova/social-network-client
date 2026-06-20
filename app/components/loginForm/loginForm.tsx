@@ -4,7 +4,7 @@ import { EmailField } from '~/components/shared/emailField'
 import { PasswordField } from '~/components/shared/passwordField'
 import Link from '@mui/material/Link'
 import { useNavigate } from 'react-router'
-import { ButtonOk } from '~/components/shared/buttonOk'
+import { ButtonOkLogin } from '~/components/shared/buttonOkLogin'
 
 export function LoginForm() {
   const testEmail = 'user1@mail.com'
@@ -49,7 +49,7 @@ export function LoginForm() {
             marginTop: 20,
           }}
         >
-          <ButtonOk email={email} password={password} fromForm="login" />
+          <ButtonOkLogin email={email} password={password} />
           <ButtonFeed />
         </div>
         <div

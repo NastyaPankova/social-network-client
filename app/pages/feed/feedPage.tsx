@@ -1,4 +1,4 @@
-import { postsExamples } from '~/app/data/postExamples'
+import { postsExamples } from '~/data/postExamples'
 import PostFeed from '~/components/post/postFeed'
 
 export function FeedPage() {

@@ -1,0 +1,10 @@
+$color-main-blue: #1976d2;      // Основной синий
+$color-main-background: #f5f8f9 ;
+
+@mixin centered-container {
+  width: 64% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}

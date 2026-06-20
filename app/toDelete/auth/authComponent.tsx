@@ -27,7 +27,7 @@ export function AuthComponent() {
   return (
     <form
       onSubmit={handleSubmit}
-      style={{
+      styles={{
         display: 'flex',
         flexDirection: 'column',
         gap: '16px',

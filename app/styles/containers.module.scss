@@ -1,0 +1,12 @@
+.mainContainer {
+  @include centered-container;
+
+background-color: transparent !important;
+}
+
+.mainHeaderContainer {
+  @include centered-container;
+
+  background-color: #ffffff !important;
+  color: #1976d2 !important;
+}

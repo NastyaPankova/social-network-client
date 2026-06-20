@@ -10,13 +10,8 @@ import {
 
 import type { Route } from './+types/root'
 import './app.css'
-import { Provider, useDispatch, useSelector } from 'react-redux'
-import { type AppDispatch, store } from '~/app/store/store'
-import { useEffect } from 'react'
-import { isAuth } from '~/app/store/slices/app/selectors'
-import { checkAuth } from '~/app/store/slices/app/thunks'
-import { getCurrentUser } from '~/app/store/slices/auth/selectors'
-import { history } from '~/app/history'
+import { Provider } from 'react-redux'
+import { store } from '~/store/store'
 
 export const links: Route.LinksFunction = () => [
   { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
@@ -52,30 +47,32 @@ export function Layout({ children }: { children: React.ReactNode }) {
 export default function App() {
   return (
     <Provider store={store}>
-      <Auth />
+      <Outlet />
     </Provider>
   )
 }
 
-export function Auth() {
-  const dispatch = useDispatch<AppDispatch>()
-  const navigate = useNavigate()
-  history.navigate = navigate
-  useEffect(() => {
-    //localStorage.getItem('token')
-    dispatch(checkAuth()).unwrap()
-  }, [])
-  const auth = useSelector(isAuth)
-  const user = useSelector(getCurrentUser)
-  console.log(user)
-
-  return (
-    <>
-      <h1>{auth ? `Hello, ${user?.name}` : 'Login'}</h1>
-      <Outlet />
-    </>
-  )
-}
+// export function Auth() {
+//   const dispatch = useDispatch<AppDispatch>()
+//   const navigate = useNavigate()
+//   history.navigate = navigate
+//   useEffect(() => {
+//     dispatch(checkAuth()).unwrap()
+//   }, [])
+//   const auth = useSelector(isAuth)
+//   const user = useSelector(getCurrentUser)
+//   const loading = useSelector(isLoading)
+//   if (loading) {
+//     <LinearProgress aria-label="Loading…" />
+//   } else {
+//     return (
+//       <>
+//         <h1>{auth ? `Hello, ${user?.name}` : 'Login'}</h1>
+//         <Outlet />
+//       </>
+//     )
+//   }
+// }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   let message = 'Oops!'

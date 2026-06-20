@@ -10,9 +10,8 @@ export default [
     index('./routes/feed/feed.tsx'),
     route('login', './routes/login/login.tsx'),
     route('registration', './routes/registration/registration.tsx'),
-    //route('auth', './auth/auth.tsx'),
-    layout('./app/protection/protected.tsx', [
-      route('secret', './routes/secret/secret.tsx'),
+    layout('./protection/protected.tsx', [
+      route('profile/:id', './routes/profile/profile.tsx'),
     ]),
   ]),
 ] satisfies RouteConfig
