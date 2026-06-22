@@ -14,7 +14,7 @@ import LogoutButton from '~/layout/components/LogoutButton'
 export default function ButtonAppBar() {
   const auth = useSelector(isAuth)
   const location = useLocation()
-  const isProfilePage = location.pathname === '/profile/me'
+  const isProfilePage = location.pathname === '/profile'
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar

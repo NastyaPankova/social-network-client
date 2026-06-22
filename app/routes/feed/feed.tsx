@@ -1,5 +1,5 @@
 import { FeedPage } from '~/pages/feed/feedPage'
 
-export default function Feed() {
+export default function FeedPageRout() {
   return <FeedPage />
 }

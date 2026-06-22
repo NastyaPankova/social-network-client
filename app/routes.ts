@@ -11,7 +11,8 @@ export default [
     route('login', './routes/login/login.tsx'),
     route('registration', './routes/registration/registration.tsx'),
     layout('./protection/protected.tsx', [
-      route('profile/:id', './routes/profile/profile.tsx'),
+      route('profile/', './routes/profile/profile.tsx'),
+      route('user/:id', './routes/userProfile/userProfile.tsx'),
     ]),
   ]),
 ] satisfies RouteConfig

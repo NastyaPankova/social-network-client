@@ -5,68 +5,59 @@ import { PasswordField } from '~/components/shared/passwordField'
 import Link from '@mui/material/Link'
 import { useNavigate } from 'react-router'
 import { ButtonOkLogin } from '~/components/shared/buttonOkLogin'
+import { Box } from '@mui/material'
+import { FormContainer } from '~/components/shared/formContainer' // Импортируем наш макет
 
 export function LoginForm() {
-  const testEmail = 'user1@mail.com'
+  const testEmail = 'AP@mail.com'
   const testPassword = 'pass1'
-
-  //const dispatch = useDispatch<AppDispatch>()
 
   const [email, setEmail] = useState(testEmail)
   const [password, setPassword] = useState(testPassword)
 
   const navigate = useNavigate()
 
-  /*const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-
-    await dispatch(loginUser({ email, password })).unwrap()
-
-    navigate('/secret')
-  }*/
-
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
-      <form noValidate autoComplete="off">
-        <EmailField
-          value={testEmail}
-          onChange={(e: ChangeEvent<HTMLInputElement>) =>
-            setEmail(e.target.value)
-          }
-        />
-        <PasswordField
-          value={testPassword}
-          onChange={(e: ChangeEvent<HTMLInputElement>) =>
-            setPassword(e.target.value)
-          }
-        />
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            width: '100%',
-            marginTop: 20,
+    <FormContainer title="LOGIN">
+      {/* Все элементы ниже автоматически попадают в {children} внутрь Stack */}
+      <EmailField
+        value={email}
+        onChange={(e: ChangeEvent<HTMLInputElement>) =>
+          setEmail(e.target.value)
+        }
+      />
+
+      <PasswordField
+        value={password}
+        onChange={(e: ChangeEvent<HTMLInputElement>) =>
+          setPassword(e.target.value)
+        }
+      />
+
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          gap: 2,
+        }}
+      >
+        <ButtonOkLogin email={email} password={password} />
+        <ButtonFeed />
+      </Box>
+
+      <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+        <Link
+          href="/registration"
+          underline="hover"
+          onClick={(e) => {
+            e.preventDefault()
+            navigate('/registration')
           }}
         >
-          <ButtonOkLogin email={email} password={password} />
-          <ButtonFeed />
-        </div>
-        <div
-          style={{ display: 'flex', justifyContent: 'center', width: '100%' }}
-        >
-          <Link
-            href="/registration"
-            underline="hover"
-            onClick={(e) => {
-              e.preventDefault()
-              navigate('/registration')
-            }}
-          >
-            No account?
-          </Link>
-        </div>
-      </form>
-    </div>
+          No account?
+        </Link>
+      </Box>
+    </FormContainer>
   )
 }

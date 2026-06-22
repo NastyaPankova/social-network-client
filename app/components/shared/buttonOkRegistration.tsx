@@ -3,8 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { isLoading } from '~/store/slices/app/selectors'
 import React from 'react'
 import type { AppDispatch } from '~/store/store'
-import { loginUser, registrationUser } from '~/store/slices/auth/thunks'
-import { getToken } from '~/store/slices/auth/selectors'
+import { registration } from '~/store/slices/authentication/thunks'
 import { useNavigate } from 'react-router'
 
 export function ButtonOkRegistration({
@@ -20,7 +19,7 @@ export function ButtonOkRegistration({
   const navigate = useNavigate()
 
   const onOkClick = async (name: string, email: string, password: string) => {
-    await dispatch(registrationUser({ name, email, password })).unwrap()
+    await dispatch(registration({ name, email, password })).unwrap()
     debugger
     navigate('/')
   }

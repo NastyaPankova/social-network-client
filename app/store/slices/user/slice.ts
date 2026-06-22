@@ -8,17 +8,17 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     clearProfile(state) {
-      state.profile = null
+      state.userProfile = null
     },
   },
   extraReducers: (builder) => {
     builder
 
       .addCase(getUserById.fulfilled, (state, action: PayloadAction<IUser>) => {
-        state.profile = action.payload
+        state.userProfile = action.payload
       })
       .addCase(getUserById.rejected, (state) => {
-        state.profile = null
+        state.userProfile = null
       })
   },
 })

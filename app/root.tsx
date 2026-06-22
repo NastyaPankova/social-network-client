@@ -60,14 +60,14 @@ export default function App() {
 //     dispatch(checkAuth()).unwrap()
 //   }, [])
 //   const auth = useSelector(isAuth)
-//   const user = useSelector(getCurrentUser)
+//   const userProfile = useSelector(getCurrentUser)
 //   const loading = useSelector(isLoading)
 //   if (loading) {
 //     <LinearProgress aria-label="Loading…" />
 //   } else {
 //     return (
 //       <>
-//         <h1>{auth ? `Hello, ${user?.name}` : 'Login'}</h1>
+//         <h1>{auth ? `Hello, ${userProfile?.name}` : 'Login'}</h1>
 //         <Outlet />
 //       </>
 //     )

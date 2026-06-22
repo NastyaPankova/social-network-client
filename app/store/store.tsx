@@ -3,6 +3,7 @@ import authReducer from './slices/auth/slice'
 import appReducer from './slices/app/slice'
 import userReducer from './slices/user/slice'
 import authenticationReducer from './slices/authentication/slice'
+import postReducer from './slices/post/slice'
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     app: appReducer,
     user: userReducer,
     authentication: authenticationReducer,
+    post: postReducer,
   },
 })
 

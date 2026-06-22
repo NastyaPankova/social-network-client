@@ -1,18 +1,5 @@
-import { postsExamples } from '~/data/postExamples'
-import PostFeed from '~/components/post/postFeed'
+import { Feed } from '~/components/feed/feed'
 
 export function FeedPage() {
-  return (
-    <div>
-      {postsExamples.map((post) => (
-        <PostFeed
-          title={post.title}
-          date={post.date}
-          content={post.content}
-          author={post.author}
-          key={post.id}
-        />
-      ))}
-    </div>
-  )
+  return <Feed />
 }

@@ -5,7 +5,7 @@
 } from '@reduxjs/toolkit'
 
 const token = 'MyNewToken'
-const user = 'MyUser'
+const userProfile = 'MyUser'
 
 export const loginUser = createAsyncThunk(
   'auth/loginUser',
@@ -19,7 +19,7 @@ export const loginUser = createAsyncThunk(
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(credentials),
       })
-      const response_test = { user: user, token: token }
+      const response_test = { userProfile: userProfile, token: token }
       console.log(response_test)
       //const data = await response.json()
       const data = response_test
@@ -35,11 +35,11 @@ export const loginUser = createAsyncThunk(
   name: 'auth',
   initialState,
   // set flag to {value} -> общее использование для загрузки
-  // set user
+  // set userProfile
   // set token
   reducers: {
     logout: (state) => {
-      state.user = null
+      state.userProfile = null
       state.token = null
       //state.error = null
       localStorage.removeItem('token') // Удаляем токен из памяти браузера
@@ -54,9 +54,9 @@ export const loginUser = createAsyncThunk(
       })
       .addCase(
         loginUser.fulfilled,
-        (state, action: PayloadAction<{ user: string; token: string }>) => {
+        (state, action: PayloadAction<{ userProfile: string; token: string }>) => {
           state.isLoading = false
-          state.user = action.payload.user
+          state.userProfile = action.payload.userProfile
           state.token = action.payload.token
         }
       )

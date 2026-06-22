@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Navigate, Outlet, useNavigate } from 'react-router'
-import { getCurrentUser, getToken } from '~/store/slices/auth/selectors'
-import { setToken } from '~/store/slices/auth/slice'
+import {
+  getCurrentUser,
+  getToken,
+} from '~/store/slices/authentication/selectors'
 import type { AppDispatch } from '~/store/store'
 import { history } from '~/history'
 import { checkAuth } from '~/store/slices/app/thunks'
@@ -20,7 +22,7 @@ export function Auth() {
   const user = useSelector(getCurrentUser)
   const loading = useSelector(isLoading)
   if (loading) {
-    ;<LinearProgress aria-label="Loading…" />
+    return <LinearProgress aria-label="Loading…" />
   } else {
     return <Outlet />
   }
