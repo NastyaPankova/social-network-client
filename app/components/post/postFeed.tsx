@@ -26,7 +26,6 @@ export default function PostFeed({ post }: { post: IPost }) {
   //вынести в какой-нибудь конфиг
   const BASE_URL = 'http://localhost:3000'
 
-  // Создаем расширенный тип: пропсы CardMedia + нативные атрибуты тега video
   type VideoCardMediaProps = CardMediaProps & ComponentPropsWithoutRef<'video'>
 
   function getMediaConfig(url: string): VideoCardMediaProps {
@@ -38,12 +37,12 @@ export default function PostFeed({ post }: { post: IPost }) {
         className: styles.media,
         component: 'video',
         src: fullUrl,
-        controls: true, // Теперь TS знает, что это нативное свойство <video>
-        autoPlay: true, // Передаем напрямую, videoHtmlAttributes больше не нужен
+        controls: true,
+        autoPlay: true,
         muted: true,
         loop: true,
         playsInline: true,
-      } as VideoCardMediaProps // Приведение типа для совместимости с MUI
+      } as VideoCardMediaProps
     }
 
     return {
@@ -54,7 +53,6 @@ export default function PostFeed({ post }: { post: IPost }) {
     } as VideoCardMediaProps
   }
   const handleLikeClick = () => {
-    // 2. ПРОВЕРКА: Если пользователь не авторизован — прерываем действие и показываем Snackbar
     if (!auth) {
       setShowAuthWarning(true)
       return
@@ -97,12 +95,12 @@ export default function PostFeed({ post }: { post: IPost }) {
           <IconButton
             aria-label="like post"
             onClick={handleLikeClick}
-            // Меняем цвет иконки на красный (error), если пост лайкнут
-            color={post.isLiked ? 'error' : 'default'}
+
+            color={post.isLiked ? 'warning' : 'default'}
           >
             <FavoriteIcon />
           </IconButton>
-          {/* Отображаем количество лайков рядом с кнопкой */}
+
           <Typography variant="caption" color="text.secondary">
             {post.likesCount}
           </Typography>

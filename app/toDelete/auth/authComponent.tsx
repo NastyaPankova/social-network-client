@@ -12,7 +12,7 @@ export function AuthComponent() {
   const testEmail = 'Test E-mail'
   const testPassword = 'Test Password'
 
-  const { isLoading } = useSelector((state: RootState) => state.auth)
+  const { isLoading } = useSelector((state: RootState) => state._auth)
   const [email, setEmail] = useState(testEmail) // Сразу тестовый email
   const [password, setPassword] = useState(testPassword)
 

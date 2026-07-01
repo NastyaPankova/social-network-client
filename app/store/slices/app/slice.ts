@@ -18,7 +18,7 @@ const appSlice = createSlice({
   //logout внутри app slice
   extraReducers: (builder) => {
     //logout
-    builder.addCase('auth/logout', (state) => {
+    builder.addCase('_auth/logout', (state) => {
       state.isAuth = false
       state.error = null
     })

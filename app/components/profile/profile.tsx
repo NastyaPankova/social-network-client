@@ -10,16 +10,13 @@ import People from '@mui/icons-material/People'
 import FeedIcon from '@mui/icons-material/Feed'
 import FavoriteIcon from '@mui/icons-material/Favorite'
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt'
-import Avatar from '@mui/material/Avatar'
 import { Grid, LinearProgress } from '@mui/material'
 import Divider from '@mui/material/Divider'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { useNavigate, Outlet, useLocation } from 'react-router'
 import { getCurrentUser } from '~/store/slices/authentication/selectors'
 import { isLoading } from '~/store/slices/app/selectors'
 import { AvatarLetter } from '~/components/avatarLetter/avatarLetter'
-import { checkAuth } from '~/store/slices/app/thunks'
-import type { AppDispatch } from '~/store/store'
 
 const listItems = [
   { icon: <FeedIcon />, label: 'Posts', path: 'posts' },

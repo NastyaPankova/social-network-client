@@ -20,9 +20,9 @@ export default function ButtonAppBar() {
       <AppBar
         position="fixed"
         sx={{
-          backgroundColor: '#ffffff', // Делаем сам хедер полностью белым
-          boxShadow: 'none', // Опционально: убираем тень, если она не нужна
-          borderBottom: '1px solid #e0e0e0', // Опционально: добавляем тонкую серую линию снизу
+          backgroundColor: '#ffffff',
+          boxShadow: 'none',
+          borderBottom: '1px solid #e0e0e0',
         }}
       >
         <Container maxWidth={false} className={styles.mainHeaderContainer}>

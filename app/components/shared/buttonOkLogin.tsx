@@ -17,7 +17,7 @@ export function ButtonOkLogin({
 }) {
   const dispatch = useDispatch<AppDispatch>()
   const navigate = useNavigate()
-  const location = useLocation() // 2. Получаем текущую локацию, где лежат мета-данные о возврате
+  const location = useLocation()
 
   const user = useSelector(getCurrentUser)
   const loading = useSelector(isLoading)
@@ -28,25 +28,24 @@ export function ButtonOkLogin({
     }
 
     try {
-      // Выполняем логин и ждем успешного завершения через .unwrap()
+
       await dispatch(login({ email, password })).unwrap()
 
-      // 3. Вытаскиваем путь возврата из истории роутера (если он пришел от интерцептора или Auth компонента)
+
       let from = location.state?.from?.pathname
 
-      // 4. Если в state пусто (например, интерцептор сделал fallback на window.location.href)
+
       if (!from) {
         const searchParams = new URLSearchParams(location.search)
         from = searchParams.get('from') || undefined
       }
 
-      // 5. Перенаправляем: на сохраненный роут, либо на '/profile' (если зашли просто так)
+
       const targetPath = from || '/profile'
 
       navigate(targetPath, { replace: true })
     } catch (error) {
-      // Сюда код попадет, только если thunk вернет rejectWithValue (ошибка пароля, сети и т.д.)
-      console.error('Не удалось войти в аккаунт:', error)
+      console.error('Login failed', error)
     }
   }
 

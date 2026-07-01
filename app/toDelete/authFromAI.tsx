@@ -7,7 +7,7 @@ import { TextField, Button, CircularProgress, Alert } from '@mui/material'
 export function AuthForm() {
   const dispatch = useDispatch<AppDispatch>()
 
-  // Достаем нужные данные из глобального слайса auth
+  // Достаем нужные данные из глобального слайса _auth
   const { user, isLoading, error } = useSelector(
     (state: RootState) => state.auth
   )

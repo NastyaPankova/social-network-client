@@ -40,15 +40,13 @@ api.interceptors.response.use(
         return api(originalRequest)
       } catch (refreshError) {
         localStorage.removeItem('token')
-        // Получаем текущий относительный путь (например, '/dashboard' или '/profile/settings')
+
         const currentPath = window.location.pathname + window.location.search
         if (history.navigate) {
-          // Передаем объект location state точно так же, как это делается через <Navigate />
           history.navigate('/login', {
             state: { from: { pathname: currentPath } },
           })
         } else {
-          // Фолбек, если роутер еще не инициализировался
           window.location.href = `/login?from=${encodeURIComponent(currentPath)}`
         }
         return Promise.reject(refreshError)

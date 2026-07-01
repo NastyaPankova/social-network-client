@@ -23,8 +23,8 @@ import Typography from '@mui/material/Typography'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router'
 
-import { getCurrentUser } from '~/store/slices/auth/selectors'
-import { logout } from '~/store/slices/auth/slice'
+import { getCurrentUser } from '~/toDelete/_auth/selectors'
+import { logout } from '~/toDelete/_auth/slice'
 
 // Экшены и селекторы для публичного профиля
 // УБРАНО: setProfile больше не нужен, данные сохраняются автоматически через extraReducers санки
@@ -88,7 +88,7 @@ export default function Profile_ex() {
   const { id } = useParams<{ id?: string }>()
   const [open, setOpen] = React.useState(true)
 
-  // Данные меня из ветки auth
+  // Данные меня из ветки _auth
   const myUser = useSelector(getCurrentUser)
 
   // Данные чужого пользователя из ветки profile/userProfile

@@ -1,11 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { setIsAuth, setIsLoading } from '~/store/slices/app/slice'
-import { setToken, setUser } from '~/store/slices/auth/slice'
+import { setToken, setUser } from '~/toDelete/_auth/slice'
 import type { IUser } from '~/interfaces/IUser'
 import api from '~/api'
 
 export const checkAuth = createAsyncThunk(
-  'app/auth',
+  'app/_auth',
   async function (_, { rejectWithValue, dispatch }) {
     try {
       dispatch(setIsLoading(true))

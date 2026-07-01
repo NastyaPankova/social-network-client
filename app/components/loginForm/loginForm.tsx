@@ -6,7 +6,7 @@ import Link from '@mui/material/Link'
 import { useNavigate } from 'react-router'
 import { ButtonOkLogin } from '~/components/shared/buttonOkLogin'
 import { Box } from '@mui/material'
-import { FormContainer } from '~/components/shared/formContainer' // Импортируем наш макет
+import { FormContainer } from '~/components/shared/formContainer'
 
 export function LoginForm() {
   const testEmail = 'AP@mail.com'
@@ -19,7 +19,7 @@ export function LoginForm() {
 
   return (
     <FormContainer title="LOGIN">
-      {/* Все элементы ниже автоматически попадают в {children} внутрь Stack */}
+
       <EmailField
         value={email}
         onChange={(e: ChangeEvent<HTMLInputElement>) =>

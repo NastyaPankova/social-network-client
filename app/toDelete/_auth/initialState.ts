@@ -1,4 +1,4 @@
-import type { AuthState } from '~/store/slices/auth/types'
+import type { AuthState } from '~/toDelete/_auth/types'
 
 export const initialState: AuthState = {
   user: null,

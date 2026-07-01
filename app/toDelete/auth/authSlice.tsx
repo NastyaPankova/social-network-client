@@ -8,7 +8,7 @@ const token = 'MyNewToken'
 const userProfile = 'MyUser'
 
 export const loginUser = createAsyncThunk(
-  'auth/loginUser',
+  '_auth/loginUser',
   async (
     credentials: { email: string; password: string },
     { rejectWithValue, getState, dispatch }
@@ -32,7 +32,7 @@ export const loginUser = createAsyncThunk(
 )
 
 /*const authSlice = createSlice({
-  name: 'auth',
+  name: '_auth',
   initialState,
   // set flag to {value} -> общее использование для загрузки
   // set userProfile

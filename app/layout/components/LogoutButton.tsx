@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router'
 import AccountBoxIcon from '@mui/icons-material/AccountBox'
 import IconButton from '@mui/material/IconButton'
-import { logout } from '~/store/slices/auth/slice'
+import { logout } from '~/toDelete/_auth/slice'
 import { useDispatch } from 'react-redux'
 import Tooltip from '@mui/material/Tooltip'
 import LogoutIcon from '@mui/icons-material/Logout'

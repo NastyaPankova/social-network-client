@@ -59,7 +59,7 @@ export default function App() {
 //   useEffect(() => {
 //     dispatch(checkAuth()).unwrap()
 //   }, [])
-//   const auth = useSelector(isAuth)
+//   const _auth = useSelector(isAuth)
 //   const userProfile = useSelector(getCurrentUser)
 //   const loading = useSelector(isLoading)
 //   if (loading) {
@@ -67,7 +67,7 @@ export default function App() {
 //   } else {
 //     return (
 //       <>
-//         <h1>{auth ? `Hello, ${userProfile?.name}` : 'Login'}</h1>
+//         <h1>{_auth ? `Hello, ${userProfile?.name}` : 'Login'}</h1>
 //         <Outlet />
 //       </>
 //     )

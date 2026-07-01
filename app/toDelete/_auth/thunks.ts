@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { setIsAuth, setIsLoading } from '~/store/slices/app/slice'
-import { setToken, setUser } from '~/store/slices/auth/slice'
+import { setToken, setUser } from '~/toDelete/_auth/slice'
 import AuthService from '~/services/authService'
 
 interface credentialsLog {
@@ -15,7 +15,7 @@ interface credentialsReg {
 }
 
 export const loginUser = createAsyncThunk(
-  'auth/loginUser',
+  '_auth/loginUser',
   async function (
     { email, password }: credentialsLog,
     { rejectWithValue, dispatch }
@@ -40,7 +40,7 @@ export const loginUser = createAsyncThunk(
 )
 
 export const registrationUser = createAsyncThunk(
-  'auth/registrationUser',
+  '_auth/registrationUser',
   async function (
     { name, email, password }: credentialsReg,
     { rejectWithValue, dispatch }

@@ -1,5 +1,5 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
-import { initialState } from '~/store/slices/auth/initialState'
+import { initialState } from '~/toDelete/_auth/initialState'
 import type { IUser } from '~/interfaces/IUser'
 import { setIsAuth } from '~/store/slices/app/slice'
 import AuthService from '~/services/authService'

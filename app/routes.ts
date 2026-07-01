@@ -4,7 +4,7 @@ import {
   index,
   layout,
 } from '@react-router/dev/routes'
-//TODO исправить index
+
 export default [
   layout('./routes/layout/layout.tsx', [
     index('./routes/feed/feed.tsx'),

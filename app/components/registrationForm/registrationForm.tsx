@@ -20,7 +20,7 @@ export function RegistrationForm() {
 
   return (
     <FormContainer title="REGISTRATION">
-      {/* ИСПРАВЛЕНО: value теперь привязаны к стейтам (name, email, password), поля активны для ввода */}
+
       <NameField
         value={name}
         onChange={(e: ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
@@ -38,7 +38,6 @@ export function RegistrationForm() {
         }
       />
 
-      {/* Кнопки выравниваются с помощью встроенного Box из MUI, убираем инлайн-стили div */}
       <Box
         sx={{
           display: 'flex',
